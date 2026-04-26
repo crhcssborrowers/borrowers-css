@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Instrument Borrowers System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+<div id="login-page" class="auth-wrapper">
+    <img src="C:/Users/USER/Documents/system not done/image/images-instruments.png" alt="Surgical Instruments" class="login-bg-instruments">
+    <div class="login-card">
+        <div class="login-logo">
+            <img src="image/logo.png" alt="System Logo">
+        </div>
+        <h1>Instrument Borrower</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" class="btn-primary">Sign In</button>
+            <p id="error-msg" class="error"></p>
+        </form>
+    </div>
+</div>
+
+<div id="dashboard-page" class="dashboard-wrapper hidden">
+
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-header">
+                <h2>
+                    CENTRAL SUPPLY & STERILIZATION SECTION<br>
+                    INSTRUMENT BORROWERS SYSTEM
+                </h2>
+            </div>
+            <nav>
+                <ul>
+                    <li id="nav-dash" class="active">Dashboard</li>
+                    <li id="nav-total">Total Borrowed</li>
+                    <li id="nav-returned">Returned</li>
+                    <li id="nav-overdue">Overdue</li>
+                    <li id="nav-monthly">Monthly Records</li>
+                    <li id="nav-available">Available Instruments</li>
+                </ul>
+            </nav>
+        </div>
+        <button id="logout-btn" class="btn-logout">Logout</button>
+    </aside>
+
+    <main class="main-content">
+
+        <div id="view-dashboard">
+            <div class="stats-grid">
+                <div class="stat-card blue"><span>Total</span><p id="stat-total">0</p></div>
+                <div class="stat-card green"><span>Active</span><p id="stat-active">0</p></div>
+                <div class="stat-card dark-green"><span>Returned</span><p id="stat-returned">0</p></div>
+                <div class="stat-card orange"><span>Overdue</span><p id="stat-overdue">0</p></div>
+            </div>
+
+<section class="form-container">
+    <h3>Borrow Instrument</h3>
+    <form id="borrow-form">
+        <input type="text" id="borrower-name" placeholder="Full Name" required>
+        <input type="text" id="issued-by" placeholder="Issued By" required>
+        
+        <div class="form-row">
+            <input list="type-list" id="type-select" placeholder="Type" required>
+            <datalist id="type-list">
+                <option value="Infectious">
+                <option value="Non-Infectious">
+            </datalist>
+
+            <input list="instrument-list" id="equipment-select" placeholder="Search Instrument..." autocomplete="off" onfocus="this.value=''" required>
+            <datalist id="instrument-list">
+                </datalist>
+
+            <select id="barcode-select" required>
+                <option value="">Select Barcode & Expiry</option>
+            </select>
+
+            <input list="area-list" id="area-select" placeholder="Area" required>
+            <datalist id="area-list">
+                <option value="ER(EMD)">
+                            <option value="OB-ER">
+                            <option value="ICU">
+                            <option value="OB">
+                            <option value="PEDIA">
+                            <option value="PICU">
+                            <option value="SURGERY WARD">
+                            <option value="GYNE">
+                            <option value="FAMMED-MEDWARD-1A">
+                            <option value="STATION-2 MEDWARD 2A">
+                            <option value="STATION-1 MEDWARD 2B">
+                            <option value="3A WARD(PEDIA EXTENSION) RESPI">
+                            <option value="3B WARD">
+                            <option value="4A WARD">
+                            <option value="4B WARD">
+                            <option value="5A WARD">
+                            <option value="5B WARD">
+                            <option value="STATION-3">
+                </datalist>
+        </div>
+        <button type="submit" class="btn-borrow-submit">Confirm Borrowing</button>
+    </form>
+</section>
+
+
+            <section class="table-container">
+                <h3></h3>
+
+                <h3 class="table-title">
+                    Active Borrowing
+                    <span class="status-circle"></span> </h3>
+                <table id="borrow-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Instrument</th>
+                            <th>Barcode</th>
+                            <th>Area</th>
+                            <th>Issued By</th>
+                            <th>Date/Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="view-total" class="hidden">
+            <section class="table-container">
+                <h3>Total History</h3>
+                <table id="total-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Instrument</th>
+                            <th>Barcode</th>
+                            <th>Area</th>
+                            <th>Date/Time</th>
+                            <th>Issued By</th>
+                            <th>Received By</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="view-returned" class="hidden">
+            <section class="table-container">
+                <h3>Returned Instruments</h3>
+                <table id="returned-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Instrument</th>
+                            <th>Barcode</th>
+                            <th>Area</th>
+                            <th>Return Time</th>
+                            <th>Received By</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="view-overdue" class="hidden">
+            <section class="table-container">
+                <h3 style="color:red;">Overdue Borrowings</h3>
+                <table id="overdue-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Instrument</th>
+                            <th>Barcode</th>
+                            <th>Area</th>
+                            <th>Issued Date</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="view-monthly" class="hidden">
+            <section class="table-container">
+                <h3>Monthly Records</h3>
+                <div class="filter-controls" style="display: flex; gap: 15px; margin-bottom: 20px;">
+    <div>
+        <label>Filter Year:</label>
+        <select id="year-filter">
+            <option value="all">All Years</option>
+            </select>
+    </div>
+    <div>
+        <label>Filter Month:</label>
+        <select id="month-filter">
+            <option value="all">All Months</option>
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+        </select>
+    </div>
+</div>
+                <table id="monthly-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Instrument</th>
+                            <th>Barcode</th>
+                            <th>Area</th>
+                            <th>Date</th>
+                            <th>Issued by</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </div>
+
+        <div id="view-available" class="hidden">
+    <section class="table-container">
+        <div class="inventory-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; background: #f8f9fa; padding: 10px; border-radius: 8px;">
+            <h3 style="margin:0;">Inventory Management</h3>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn-add-new" onclick="openAddInstrumentModal()" title="Add New">+ Add</button>
+                <button class="btn-delete" onclick="openDeleteModal()" style="padding: 10px 15px; background:#e74c3c; color:white; border:none; border-radius:4px; cursor:pointer;" title="Remove Instrument">−</button>
+            </div>
+        </div>
+
+        <table id="available-table">
+            <thead>
+                <tr>
+                    <th>Instrument Name</th>
+                    <th>Initial Stock</th>
+                    <th>Available</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+</div>
+
+<div id="add-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+        <h3>Add New Instrument</h3>
+        <div class="form-group">
+            <label>Instrument Name:</label>
+            <input type="text" id="new-inst-name" placeholder="e.g. Scalpel Holder">
+        </div>
+        <div class="form-group">
+            <label>Initial Stock Count:</label>
+            <input type="number" id="new-inst-stock" value="1" min="1">
+        </div>
+        <div class="modal-actions">
+            <button onclick="closeAddInstrumentModal()" class="btn-cancel">Cancel</button>
+            <button onclick="saveNewInstrument()" class="btn-save">Save Instrument</button>
+        </div>
+    </div>
+</div>
+
+<div id="delete-modal" class="modal-overlay hidden">
+    <div class="modal-card" style="width: 450px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <h3 style="margin: 0; color: #c0392b;">Remove Instrument</h3>
+            <button onclick="closeDeleteModal()" style="background:none; border:none; font-size: 20px; cursor:pointer;">&times;</button>
+        </div>
+        <p style="font-size: 14px; color: #666; margin: 15px 0 10px;">Select an instrument to remove:</p>
+        <div id="delete-list-container" style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 15px;"></div>
+        <div id="delete-action-area" class="hidden" style="background: #fff5f5; padding: 15px; border-radius: 8px; border: 1px dashed #e74c3c; text-align: center;">
+            <p>Delete <strong id="target-to-delete"></strong>?</p>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                <button onclick="confirmDelete()" class="btn-save" style="background: #c0392b;">Yes, Delete Now</button>
+                <button onclick="cancelSelection()" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="style.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,596 @@
+/* =======================
+   GLOBAL SETUP
+======================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: #001C01;
+    color: #2c3e50;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =======================
+   LOGIN PAGE
+======================= */
+.auth-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #006400, #009A00, #22FF02);
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 60px;
+    border-radius: 15px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-top: 6px solid #2ecc71;
+}
+
+/* =======================
+   LOGO (ABOVE TITLE)
+======================= */
+.login-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-logo img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+
+    border-radius: 10px;
+    padding: 6px;
+    background: white;
+    border: 0px solid #ddd;
+
+    box-shadow: 0 0px 0px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.login-title {
+    margin-bottom: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #145a32;
+    letter-spacing: 1px;
+}
+
+/* =======================
+   FORM
+======================= */
+input, select {
+    width: 100%;
+    padding: 8px; 
+    margin: 4px 0;
+    border: 1px solid #dcdfe3;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: #2ecc71;
+    color: floralwhite;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #27ae60;
+}
+
+/* =======================
+   DASHBOARD LAYOUT
+======================= */
+.dashboard-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 300px;
+    background: linear-gradient(to right, #003300, #007500 60%, #19BD01 85%, #003300 100%);
+    color: white;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-header h2 {
+    font-size: 16px;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 25px;
+
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+
+    background: rgba(255,255,255,0.05);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 12px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sidebar li:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.sidebar li.active {
+    background: #1abc9c;
+}
+
+.btn-logout {
+    padding: 12px;
+    background: #e74c3c;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+/* =======================
+   MAIN CONTENT
+======================= */
+/* =======================
+   MAIN CONTENT
+======================= */
+.main-content {
+    flex: 4;
+    padding: 0px;
+    overflow-y: auto; /* Ensures you can scroll if content is long */
+    background: #f4f7f6; /* Keeps the light grey contrast against the dark sidebar */
+    background: linear-gradient(to right, #003300, #007500 60%, #19BD01 85%, #003300 100%);
+}
+/* =======================
+   STATS
+======================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.stat-card {
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+}
+
+.stat-card p {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.blue { background: #3498db; }
+.green { background: #2ecc71; }
+.dark-green { background: #145a32; }
+.orange { background: #f39c12; }
+
+/* =======================
+   FORM & TABLE
+======================= */
+.form-container,
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 1px;
+    margin: 0;
+    border-left: none;
+
+}
+
+.form-row {
+    display: flex;
+    gap: 6px;
+}
+
+/* =======================
+   BUTTON
+======================= */
+.btn-borrow-submit {
+    width: 100%;
+    padding: 12px;
+    background: #16a085;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-borrow-submit:hover {
+    background: #138d75;
+}
+
+/* =======================
+   TABLE
+======================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #eafaf1;
+    padding: 10px;
+    font-size: 13px;
+    color: #145a32;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+}
+
+/* =======================
+   RETURN BUTTON
+======================= */
+button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* =======================
+   ERROR TEXT
+======================= */
+.error {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+ /* compact date + button alignment */
+.expiry-wrap {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 3px;
+}
+
+/* CALENDAR SMALLER */
+.expiry-input {
+width: 60px;       /* ↓ smaller calendar */
+font-size: 11px;
+padding: 2px;
+height: 26px;
+}
+
+/* =======================
+   EXPIRY EDITOR 
+======================= */
+
+.expiry-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px; /* spacing between input and button */
+}
+
+/* SMALL DATE INPUT */
+.expiry-inline input[type="date"] {
+    width: 120px;
+    height: 26px;
+    font-size: 11px;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* SMALL GREEN ENTER BUTTON */
+.enter-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    font-size: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 26px;
+    line-height: 1;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.enter-btn:hover {
+    background: #1e7e34;
+}
+
+/* CENTER TABLE CELL CONTENT */
+#available-table td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 6px;
+}
+/* =======================
+TABLE FIX ALIGNMENT 
+======================= */
+
+/* Ensure the container allows for the table's width */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; /* Change from 'fixed' to 'auto' to prevent overlapping */
+}
+
+/* Fix text alignment */
+.table-container th,
+.table-container td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 5px;
+}
+
+/* Specific column adjustments for the Borrow Table */
+#borrow-table th:nth-child(5), 
+#borrow-table td:nth-child(5) { 
+    width: 160px; /* Give the Date/Time column specific space */
+    white-space: nowrap; 
+}
+   VIEW MODE
+======================= */
+body.view-only-mode .admin-only {
+    display: none;
+}
+/* ===================================================
+   NEW UPDATES FOR ISSUED BY AND COLUMN ALIGNMENT 
+=================================================== */
+
+/* This makes sure the new field fits in the same row as Name/Type */
+#borrow-form .form-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Allows it to wrap if the screen is small */
+}
+
+/* Specific column sizing for the Active Borrowing table */
+#borrow-table th:nth-child(1), #borrow-table td:nth-child(1){ width: 14%; } /* Name */
+#borrow-table th:nth-child(2), #borrow-table td:nth-child(2){ width: 10%; } /* Type */
+#borrow-table th:nth-child(3), #borrow-table td:nth-child(3){ width: 14%; } /* Instrument */
+#borrow-table th:nth-child(4), #borrow-table td:nth-child(4){ width: 10%; } /* Area */
+#borrow-table th:nth-child(5), #borrow-table td:nth-child(5){ width: 12%; } /* Issued By */
+#borrow-table th:nth-child(6), #borrow-table td:nth-child(6){ width: 18%; } /* Date/Time */
+#borrow-table th:nth-child(7), #borrow-table td:nth-child(7){ width: 12%; } /* Status */
+#borrow-table th:nth-child(8), #borrow-table td:nth-child(8){ width: 10%; } /* Action */
+
+/* Make text small enough to fit the new column */
+#borrow-table td {
+    font-size: 12px;
+    white-space: normal; 
+    word-break: break-word;
+}
+/* Styling for the Returned Table Columns */
+#returned-table th:nth-child(1), #returned-table td:nth-child(1) { width: 15%; } /* Borrower Name */
+#returned-table th:nth-child(2), #returned-table td:nth-child(2) { width: 12%; } /* Type */
+#returned-table th:nth-child(3), #returned-table td:nth-child(3) { width: 18%; } /* Instrument */
+#returned-table th:nth-child(4), #returned-table td:nth-child(4) { width: 12%; } /* Area */
+#returned-table th:nth-child(5), #returned-table td:nth-child(5) { width: 23%; } /* Return Time */
+#returned-table th:nth-child(6), #returned-table td:nth-child(6) { width: 20%; } /* Received By */
+
+/* Ensure the Returned table behaves like the Active one */
+#returned-table {
+    width: 100%;
+    table-layout: auto;
+    text-align: center;
+}
+/* TABLE STYLING */
+.table-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    overflow-x: auto; /* Ensures tables don't break on small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+table th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+/* Status Colors */
+.status-returned {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Return Button Styling */
+button[onclick^="returnItem"] {
+    background-color: #ffc107;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+button[onclick^="returnItem"]:hover {
+    background-color: #e0a800;
+}
+
+/* Hidden Class (Crucial for your showView function) */
+.hidden {
+    display: none !important;
+}
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10000;
+}
+
+.modal-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; }
+
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+/* Buttons */
+.btn-add-new { background: #27ae60; color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; }
+.btn-save { background: #27ae60; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+.btn-cancel { background: #95a5a6; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+.btn-delete { background: #e74c3c; color: white; border: none; padding: 5px 8px; border-radius: 4px; cursor: pointer; }
+
+.hidden { display: none; }
+/* Para sa text nga Active Borrowing */
+.table-container h2 {
+    color: #7FFFD4 !important; /* Aquamarine color */
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+/* =========================================
+   TABLE TITLE WITH CIRCLE (image_7.png Style)
+   ========================================= */
+
+/* Kini ang style para sa tibuok h3 container */
+.table-title {
+    display: flex;         /* Gi-flex nato para magtapad ang text ug circle */
+    align-items: center;    /* Gi-center nato vertically */
+    gap: 15px;             /* Gidistansya nato og 15px */
+    
+    color: #12B9B9 !important; /* Kini ang Teal color sa text (image_7.png) */
+    font-size: 24px;       /* Gipadak-an og gamay */
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+    
+    /* Gikuha nato ang tanang neon outline ug shadows */
+    text-shadow: none !important; 
+}
+
+/* Kini ang style para sa Neon Green Circle */
+.status-circle {
+    display: inline-block;
+    width: 20px;           /* Gitas-on sa circle */
+    height: 20px;          /* Gilapdon sa circle */
+    
+    background-color: #39FF14; /* Kini ang Neon Green color sa picture */
+    border: 3px solid #b2f6b2; /* Kini ang light green outer border (image_7.png) */
+    border-radius: 50%;     /* Mao ni ang naghimo og Perfect Circle */
+    
+    /* Gikuha nato ang anino sa text, apan ang circle ra ang naay gamay nga shadow */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+}
+/* =========================================
+   NEW: INSTRUMENT IMAGE ON LOGIN PAGE
+   ========================================= */
+
+/* Kini mag-style sa wrapper aron allow sa absolute positioning */
+.auth-wrapper {
+    position: relative; /* Importante kini */
+    /* ... imong karaan nga auth-wrapper styles ... */
+}
+
+/* =========================================
+   LOGIN PAGE (Modern Angle Triangle Style)
+   ========================================= */
+
+.auth-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Ang tibuok luyo kay Solid Green (#006400) */
+    background: #006400; 
+    
+    position: relative;
+    overflow: hidden;
+}
+
+.login-bg-instruments {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;         
+    height: 100vh;  
+    object-fit: cover;
+    object-position: left center; 
+    opacity: 0.5;       
+    z-index: 1;        
+    pointer-events: none;
+    clip-path: polygon(
+        0 0,         
+        70% 0,      
+        40% 100%,    
+        0 100%       
+    );
+}
+
+
+.login-card {
+    position: relative;
+    z-index: 10;
+
+}
